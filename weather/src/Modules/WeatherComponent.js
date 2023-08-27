@@ -94,14 +94,20 @@ const WeatherInfoComponent = ({name, value}) => { // the  WeatherInfoComponent w
 
 
 
-const  WeatherComponent = ({weather}) => {
+const  WeatherComponent = ({weather, updateWeather}) => {
   //this is to determine wether it is sunrise(d) or sunset(n)
   const isDay = weather?.weather[0].icon?.includes('d')// this mean if the  weather(icon)  in response gooten includes d or n 
   const getTime = () => {
     return `${new Date().getHours()} : ${new Date().getMinutes()}`
 }
+
+  const clearWeatherState = () => {
+    updateWeather();
+}
+  
     return (
       <>
+        <button onClick={clearWeatherState}>back</button>
        <WeatherContainer>
                 <Condition>
                 <span>{`${Math.floor(weather?.main?.temp - 273)}°C`}</span> 

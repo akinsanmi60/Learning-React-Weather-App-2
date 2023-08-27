@@ -63,14 +63,14 @@ function App() {
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`,
     );
     updateWeather(response.data);
-    console.log(response);
   };
+  console.log();
   return (
     <div className="App">
       <Container>
       <AppLabel>React Weather App</AppLabel>
 
-        {weather? <WeatherComponent weather={weather} /> : <CityComponent
+        {weather? <WeatherComponent weather={weather} updateWeather={updateWeather} /> : <CityComponent
          updateCity={updateCity}
         fetchWeather={fetchWeather}
           />}
@@ -84,11 +84,3 @@ function App() {
 export default App;
 
 
-//  {weather? <WeatherComponent />: <CityComponent
-// updateCity={updateCity}
-// fetchWeather={fetchWeather}
-//   />}
-
-/**this mean' if there is waether, show the weather component but if no weather 
- * show the citycomponent'
- */
